@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-mossdype"
 description = "Dynamic position extrapolation for MOSS-Image: render well past the model's 4 MP training range without retraining."
-version = "1.0.1"
+version = "1.0.2"
 license = { file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.10"

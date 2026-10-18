@@ -11,11 +11,10 @@ import torch
 import comfy.model_base
 import comfy.patcher_extension as pe
 
-from . import dype_core as dc
 from .dype_core import (
     AXES, METHODS, MSCALE_MODES, SCHEDULES,
     DyPEConfig, build_pe, compute_kappa, compute_kappa_pair, describe_schedule,
-    spectral_bandwidths, spectral_detail, spectral_stats,
+    effective_scales, spectral_bandwidths, spectral_detail, spectral_stats,
 )
 
 _TRACE_PATH = os.environ.get("MOSS_DYPE_TRACE")
@@ -74,7 +73,7 @@ def _make_rope(original, cfg: DyPEConfig, kappa_h: float, kappa_w: float):
         out = build_pe(h, w, text_len, device, cfg, kappa_h, kappa_w)
         if _TRACE_PATH:
             base = build_pe(h, w, text_len, device, cfg, 0.0, 0.0)
-            s_h, s_w = dc.effective_scales(h, w, cfg)
+            s_h, s_w = effective_scales(h, w, cfg)
             _trace({"event": "rope", "lat_h": h, "lat_w": w, "text_len": text_len,
                     "kappa_h": round(kappa_h, 5), "kappa_w": round(kappa_w, 5),
                     "pe_delta": round(float((out - base).abs().mean()), 6),
