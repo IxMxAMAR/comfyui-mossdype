@@ -1,0 +1,16 @@
+[project]
+name = "comfyui-mossdype"
+description = "Dynamic position extrapolation for MOSS-Image: render well past the model's 4 MP training range without retraining."
+version = "1.0.0"
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/IxMxAMAR/comfyui-mossdype"
+
+[tool.comfy]
+PublisherId = "ixmxamar"
+DisplayName = "MOSS-Image DyPE-M"
+Icon = ""
